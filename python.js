@@ -53,9 +53,9 @@ function min(arr) {
   return Math.min(...arr);
 }
 
-function reverse(str) {
-  return str.split("").reverse().join("");
-}
+String.prototype.reverse = function() {
+  return this.split("").reverse().join("");
+};
 
 function slice(arr, start, end) {
   return arr.slice(start, end);
@@ -81,6 +81,48 @@ function type(obj) {
   return typeof obj;
 }
 
+function abs(value) {
+  return Math.abs(value);
+}
+
+function round(value, decimals = 0) {
+  return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
+}
+
+function enumerate(iterable, start = 0) {
+  return Array.from(iterable).map((element, index) => [start + index, element]);
+}
+
+function join(iterable, separator = '') {
+  return Array.from(iterable).join(separator);
+}
+
+function map(iterable, fn) {
+  return Array.from(iterable).map(fn);
+}
+
+function filter(iterable, fn) {
+  return Array.from(iterable).filter(fn);
+}
+
+function zip(...iterables) {
+  return Array.from({ length: Math.min(...iterables.map(iterable => iterable.length)) }, (_, i) =>
+    iterables.map(iterable => iterable[i])
+  );
+}
+
+function any(iterable) {
+  return Array.from(iterable).some(x => x);
+}
+
+function all(iterable) {
+  return Array.from(iterable).every(x => x);
+}
+
+function reversed(iterable) {
+  return Array.from(iterable).reverse();
+}
+
 
 module.exports = {
   print,
@@ -98,5 +140,16 @@ module.exports = {
   str,
   int,
   float,
-  type
+  type,
+  abs,
+  round,
+  enumerate,
+  join,
+  map,
+  filter,
+  zip,
+  any,
+  all,
+  reversed,
+  range
 };
