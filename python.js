@@ -134,7 +134,6 @@ module.exports = {
   sort,
   max,
   min,
-  reverse,
   slice,
   count,
   str,
